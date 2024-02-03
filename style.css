@@ -12,11 +12,15 @@ body {
 }
 
 .header, .footer {
-    background-color: black;
+    background-color: white;
     flex-grow: 1;
     flex-shrink: 2;
     width: 50vh;
     height: 25vh;
+    font-size: large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .gameboard {
@@ -28,7 +32,7 @@ body {
     display: grid;
     grid-template: repeat(3, 1fr)/repeat(3, 1fr);
     gap: 1px;
-    
+
 }
 
 .cell {
