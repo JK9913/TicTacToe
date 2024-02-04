@@ -1,6 +1,6 @@
 const rows = 3;
 const columns = 3;
-const board = []
+let board = []
 const players = {player1:'x', player2:'o'};
 
 // Fetch elements
@@ -8,6 +8,7 @@ const divGameBoard = document.querySelector(".gameboard");
 const header = document.querySelector(".header");
 const footer = document.querySelector(".footer");
 const cells = document.querySelectorAll(".cell");
+const restartButton = document.querySelector("#restart")
 
 // add some event listeners
 cells.forEach((element) => {
@@ -44,6 +45,9 @@ cells.forEach((element) => {
         }
         })
     })
+
+
+
 
 const gameRules = (function () {
 
@@ -83,11 +87,14 @@ const gameRules = (function () {
 
 })()
 
+
+
 // Creating a function for initiating the board
 const gameBoard = (function () {
     
     // Creating an empty gameboard
     const createGameBoard = () => {
+        board = []
         for (let i=0;i<rows;i++) {
             let tempArray = [];
             for (let x=0;x<columns;x++){
@@ -116,6 +123,11 @@ const gameBoard = (function () {
     let playerTurn = '';
     // check and change player value
     const changePlayer = () => {
+        if (Object.values(board[0]).includes('x') || Object.values(board[1]).includes('x') || Object.values(board[2]).includes('x')) {
+            // continue
+        } else {
+            playerTurn = ''
+        }
 
         console.log(playerTurn)
         if (playerTurn === '') {
@@ -158,6 +170,7 @@ board[0]
     return {createGameBoard, changePlayer, placeValueInBoard}
 })()
 
+restartButton.addEventListener('click', gameBoard.createGameBoard);
 // IIMF funciton for game rules
 
 
